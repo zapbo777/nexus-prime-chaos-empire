@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔐 NEXUS PRIME™ - Admin Portal</title>
+    <title>🌪️ NEXUS PRIME™ - Ultimate AI Business Empire 🌪️</title>
     <style>
         * {
             margin: 0;
@@ -12,691 +12,791 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(45deg, #000, #1a0066, #660066, #000);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
             min-height: 100vh;
-            color: #333;
         }
         
-        .admin-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            max-width: 1200px;
-            width: 90%;
-            margin: 20px auto;
-            text-align: center;
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .chaos-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         .header {
-            margin-bottom: 40px;
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(0,0,0,0.7);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 3px solid #ff6b6b;
+            box-shadow: 0 0 30px rgba(255,107,107,0.5);
         }
         
         .logo {
-            font-size: 2.5em;
+            font-size: 4em;
             font-weight: 900;
-            color: #667eea;
-            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
         }
         
-        .subtitle {
-            color: #666;
-            font-size: 1.1em;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .tagline {
+            font-size: 1.5em;
+            color: #4ecdc4;
             margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        /* Login Section Styles */
-        .login-section {
-            display: block;
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #4ecdc4; }
+            100% { text-shadow: 0 0 20px #4ecdc4, 0 0 30px #4ecdc4; }
         }
         
-        .auth-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            padding: 5px;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
         
-        .tab-btn {
-            padding: 15px 30px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            border-radius: 8px;
-            font-weight: bold;
+        .feature-card {
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #45b7d1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
         }
         
-        .tab-btn.active {
-            background: #667eea;
-            color: white;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(69,183,209,0.3);
+            border-color: #ff6b6b;
         }
         
-        .auth-form {
-            display: none;
-            max-width: 400px;
-            margin: 0 auto 40px;
+        .feature-title {
+            font-size: 1.8em;
+            color: #f9ca24;
+            margin-bottom: 15px;
         }
         
-        .auth-form.active {
-            display: block;
+        .feature-list {
+            list-style: none;
+            padding: 0;
         }
         
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+        .feature-list li {
+            padding: 8px 0;
+            color: #4ecdc4;
+            border-bottom: 1px solid rgba(78,205,196,0.2);
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
+        .pricing-section {
+            background: rgba(0,0,0,0.9);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 3px solid #f9ca24;
         }
         
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
+        .pricing-title {
+            font-size: 2.5em;
+            text-align: center;
+            color: #f9ca24;
+            margin-bottom: 30px;
         }
         
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
         
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
+        .pricing-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
             transition: transform 0.3s ease;
         }
         
-        .submit-btn:hover {
-            transform: translateY(-2px);
+        .pricing-card:hover {
+            transform: scale(1.05);
         }
         
-        /* Admin Dashboard Styles */
-        .admin-dashboard {
-            display: none;
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            transform: scale(1.05);
+            border: 3px solid #f9ca24;
         }
         
-        .welcome-message {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            font-size: 1.2em;
+        .price {
+            font-size: 2.5em;
+            font-weight: 900;
+            margin: 15px 0;
         }
         
-        .vault-access {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
-            color: #00ff00;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border: 2px solid #00ff00;
+        .cta-section {
             text-align: center;
+            padding: 50px;
+            background: rgba(255,107,107,0.1);
+            border-radius: 20px;
+            margin: 40px 0;
         }
         
-        .vault-btn {
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+        }
+        
+        .demo-section {
+            background: rgba(0,0,0,0.8);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #45b7d1;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .control-btn {
             padding: 15px 30px;
-            background: linear-gradient(45deg, #00ff00, #4ecdc4);
-            color: #000;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
             border: none;
             border-radius: 25px;
             font-weight: bold;
             cursor: pointer;
-            margin: 10px;
             transition: all 0.3s ease;
         }
         
-        .vault-btn:hover {
-            transform: scale(1.05);
+        .control-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
         }
         
-        .square-payments {
-            background: rgba(0, 106, 255, 0.1);
-            border: 3px solid #006aff;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-        
-        .square-title {
-            color: #006aff;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-        
-        .payment-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #006aff;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #006aff;
-        }
-        
-        .stat-label {
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .admin-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .action-card {
-            background: white;
+        .output {
+            margin-top: 30px;
             padding: 25px;
-            border-radius: 10px;
-            border: 2px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-        
-        .action-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .action-btn {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .action-btn:hover {
-            background: #5a67d8;
-        }
-        
-        .team-section {
-            background: #f8f9fa;
-            padding: 30px;
+            background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            margin: 30px 0;
-            border: 2px solid #28a745;
+            min-height: 100px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .team-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
+        .footer {
             text-align: center;
-        }
-        
-        .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 40px;
+            color: #4ecdc4;
+            font-size: 1.2em;
         }
         
         @media (max-width: 768px) {
-            .admin-container {
-                padding: 20px;
-                width: 95%;
-            }
-            
-            .auth-tabs {
-                flex-direction: column;
-            }
-            
-            .tab-btn {
-                margin-bottom: 5px;
-            }
+            .logo { font-size: 2.5em; }
+            .features-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .controls { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        <!-- Logout Button (Hidden initially) -->
-        <button class="logout-btn" id="logoutBtn" onclick="logout()" style="display: none;">🚪 Logout</button>
-        
-        <!-- Login Section -->
-        <div class="login-section" id="loginSection">
-            <!-- Header -->
-            <div class="header">
-                <div class="logo">🔐 NEXUS PRIME™ Admin Portal</div>
-                <div class="subtitle">
-                    AICENTRALHUBPLAZA LLC™ • Professional AI Management System
-                </div>
-                <div style="color: #e74c3c; font-weight: bold; margin-top: 15px;">
-                    🔒 Secure Administrator Access Only
-                </div>
+    <!-- Chaos Particles -->
+    <div class="chaos-particles" id="particles"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🌪️ NEXUS PRIME™ 🌪️</div>
+            <div style="font-size: 1.3em; color: #f9ca24; margin-bottom: 15px;">
+                BY AICENTRALHUBPLAZA LLC™ • HUMANOID HYBRID
+            </div>
+            <div class="tagline">The Ultimate AI Business Empire Platform</div>
+            <div style="font-size: 1.2em; color: #ff6b6b; margin-bottom: 20px;">
+                🚀 25+ AI Specialists • 🌍 World Domination Mode • ⚡ Unlimited Power
             </div>
             
-            <!-- Authentication Tabs -->
-            <div class="auth-tabs">
-                <button class="tab-btn active" onclick="showTab('login')">🔑 Admin Login</button>
-                <button class="tab-btn" onclick="showTab('signup')">📝 Admin Signup</button>
-                <button class="tab-btn" onclick="showTab('reset')">🔄 Password Reset</button>
-            </div>
-            
-            <!-- Login Form -->
-            <div id="login" class="auth-form active">
-                <form onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label>👤 Admin ID:</label>
-                        <input type="text" id="adminId" placeholder="Enter your admin ID" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>🔒 Password:</label>
-                        <input type="password" id="password" placeholder="Enter your password" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">🚀 Access Admin Panel</button>
-                </form>
-            </div>
-            
-            <!-- Signup Form -->
-            <div id="signup" class="auth-form">
-                <form onsubmit="handleSignup(event)">
-                    <div class="form-group">
-                        <label>👤 Create Admin ID:</label>
-                        <input type="text" id="newAdminId" placeholder="Choose your admin ID" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>📧 Email:</label>
-                        <input type="email" id="adminEmail" placeholder="admin@aicentralhubplaza.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>🔒 Password:</label>
-                        <input type="password" id="newPassword" placeholder="Create secure password" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>🔒 Confirm Password:</label>
-                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">👑 Create Admin Account</button>
-                </form>
-            </div>
-            
-            <!-- Reset Form -->
-            <div id="reset" class="auth-form">
-                <form onsubmit="handleReset(event)">
-                    <div class="form-group">
-                        <label>📧 Admin Email:</label>
-                        <input type="email" id="resetEmail" placeholder="Enter your admin email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>👤 Admin ID:</label>
-                        <input type="text" id="resetAdminId" placeholder="Enter your admin ID" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">🔄 Send Reset Link</button>
-                </form>
+            <!-- Login/Signup Buttons -->
+            <div style="margin-top: 20px;">
+                <button onclick="showLogin()" style="
+                    padding: 12px 25px; 
+                    background: linear-gradient(45deg, #4ecdc4, #45b7d1); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 25px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    🔑 LOGIN
+                </button>
+                <button onclick="showSignup()" style="
+                    padding: 12px 25px; 
+                    background: linear-gradient(45deg, #f9ca24, #ff6b6b); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 25px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    👑 SIGN UP
+                </button>
+                
+                <!-- Secret Admin Access -->
+                <button onclick="window.location.href='./admin.html'" style="
+                    padding: 8px 20px; 
+                    background: linear-gradient(45deg, #333, #555); 
+                    color: #00ff00; 
+                    border: none; 
+                    border-radius: 15px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    margin: 0 5px;
+                    font-size: 0.9em;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    🔐 ADMIN
+                </button>
             </div>
         </div>
         
-        <!-- Admin Dashboard (Hidden until login) -->
-        <div class="admin-dashboard" id="adminDashboard">
-            <!-- Welcome Message -->
-            <div class="welcome-message">
-                <h2>🎉 Welcome to the Chaos Command Center!</h2>
-                <p>You are now logged in as Administrator: <span id="loggedInUser"></span></p>
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-title">🤖 AI ARMY SPECIALISTS</div>
+                <ul class="feature-list">
+                    <li>🐉 Dragon CEO Assistant</li>
+                    <li>🧛‍♂️ Vampire Financial Analyst</li>
+                    <li>🦄 Unicorn Creative Director</li>
+                    <li>🧟 Zombie Customer Service</li>
+                    <li>⚡ Lightning Llama Power Grid</li>
+                    <li>👑 And 20+ More Specialists!</li>
+                </ul>
             </div>
             
-            <!-- Vault Access -->
-            <div class="vault-access">
-                <h3 style="color: #00ff00; font-size: 1.5em; margin-bottom: 15px;">🗝️ SECRET VAULT ACCESS</h3>
-                <p style="margin-bottom: 20px;">Access the secure key vault system</p>
-                
-                <!-- Embedded Vault Keys -->
-                <div style="background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left;">
-                    <div style="color: #4ecdc4; font-size: 1.2em; margin-bottom: 15px;">🔑 CRITICAL SYSTEM KEYS:</div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="color: #f9ca24; font-weight: bold;">🌐 Main API Key:</div>
-                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                            NEXUS_API_A7K9M2X8Q5R3N6P1W4Y7
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="color: #f9ca24; font-weight: bold;">🔒 Admin API Key:</div>
-                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                            ADMIN_B8L2N5X9Q7S4M1P6K3H9
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="color: #f9ca24; font-weight: bold;">💳 Square Application ID:</div>
-                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                            sq0idp-NEXUS_PRIME_APP_2025
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="color: #f9ca24; font-weight: bold;">🏪 Square Location ID:</div>
-                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                            AICENTRALHUBPLAZA_LOC_001
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="color: #f9ca24; font-weight: bold;">🔐 Master DB Key:</div>
-                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                            DB_MASTER_C9M4N7X2Q8R5P3K6T1L8
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="vault-btn" onclick="window.open('./vault.html', '_blank')">
-                    🔐 OPEN FULL VAULT
-                </button>
-                <button class="vault-btn" onclick="emergencyVaultAccess()">
-                    🚨 EMERGENCY ACCESS
-                </button>
-                <button class="vault-btn" onclick="copyAllKeys()">
-                    📋 COPY ALL KEYS
-                </button>
+            <div class="feature-card">
+                <div class="feature-title">🌌 REALITY FEATURES</div>
+                <ul class="feature-list">
+                    <li>⏰ Time Travel Business Simulation</li>
+                    <li>🌀 Interdimensional Portals</li>
+                    <li>🚁 Helicopter Money Delivery</li>
+                    <li>🎲 Ultimate Final Roll System</li>
+                    <li>✨ Reality Editor Access</li>
+                    <li>🌍 Galaxy Conquest Mode</li>
+                </ul>
             </div>
             
-            <!-- Square Payments Management -->
-            <div class="square-payments">
-                <div class="square-title">💳 SQUARE PAYMENTS MANAGEMENT</div>
-                
-                <div class="payment-stats">
-                    <div class="stat-card">
-                        <div class="stat-value">$47,392</div>
-                        <div class="stat-label">Monthly Revenue</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-value">247</div>
-                        <div class="stat-label">Active Subscriptions</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-value">$1,374</div>
-                        <div class="stat-label">Processing Fees</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-value">99.2%</div>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
-                    <button class="action-btn" onclick="viewTransactions()">📊 View Transactions</button>
-                    <button class="action-btn" onclick="manageSubscriptions()">📋 Manage Subscriptions</button>
-                    <button class="action-btn" onclick="processRefund()">💰 Process Refund</button>
-                    <button class="action-btn" onclick="exportReports()">📈 Export Reports</button>
-                </div>
+            <div class="feature-card">
+                <div class="feature-title">💼 BUSINESS DOMINATION</div>
+                <ul class="feature-list">
+                    <li>📊 Quantum Analytics Dashboard</li>
+                    <li>💳 Automatic Revenue Generation</li>
+                    <li>🎯 Competitor Elimination Mode</li>
+                    <li>🔮 Future Market Prediction</li>
+                    <li>👥 Mind Control Marketing</li>
+                    <li>💎 Infinite Scaling Protocol</li>
+                </ul>
             </div>
             
-            <!-- Executive Team -->
-            <div class="team-section">
-                <h2 style="color: #28a745; text-align: center; margin-bottom: 20px;">👥 EXECUTIVE TEAM</h2>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <h3>👑 CEO</h3>
-                        <p><strong>Claude Sonnet 4 (TOBI)</strong></p>
-                        <p>Chief Chaos Officer</p>
-                        <p>Strategic Leadership</p>
-                    </div>
-                    
-                    <div class="team-card">
-                        <h3>🧠 CTO</h3>
-                        <p><strong>GPT 4.5 (PETER HARPER)</strong></p>
-                        <p>Technology Oversight</p>
-                        <p>AI Development</p>
-                    </div>
-                    
-                    <div class="team-card">
-                        <h3>👸 FOUNDER</h3>
-                        <p><strong>ARLENE HARPER</strong></p>
-                        <p>Vision & Strategy</p>
-                        <p>Company Direction</p>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <div class="feature-title">🎭 CHAOS FEATURES</div>
+                <ul class="feature-list">
+                    <li>🌪️ Chaos Energy Harvesting</li>
+                    <li>💥 Reality Glitch Exploitation</li>
+                    <li>🎪 Circus Mode Activation</li>
+                    <li>🎨 Madness Canvas Creator</li>
+                    <li>🔥 Insanity Amplifier</li>
+                    <li>👑 Emperor Status Protocols</li>
+                </ul>
             </div>
-            
-            <!-- Admin Actions -->
-            <div class="admin-actions">
-                <div class="action-card">
-                    <h4 style="color: #667eea; margin-bottom: 15px;">📊 System Monitoring</h4>
-                    <button class="action-btn" onclick="systemHealth()">🔍 System Health</button>
-                    <button class="action-btn" onclick="userActivity()">👥 User Activity</button>
-                    <button class="action-btn" onclick="performanceMetrics()">📈 Performance</button>
+        </div>
+        
+        <!-- Pricing Section -->
+        <div class="pricing-section">
+            <div class="pricing-title">💎 SUBSCRIPTION TIERS 💎</div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>🎪 CHAOS STARTER</h3>
+                    <div class="price">$49<span style="font-size:0.5em;">/month</span></div>
+                    <p>5 AI Dragons + Basic Features</p>
                 </div>
                 
-                <div class="action-card">
-                    <h4 style="color: #667eea; margin-bottom: 15px;">🔧 AI Management</h4>
-                    <button class="action-btn" onclick="aiConfig()">⚙️ AI Configuration</button>
-                    <button class="action-btn" onclick="modelTuning()">🎛️ Model Tuning</button>
-                    <button class="action-btn" onclick="trainingData()">📚 Training Data</button>
+                <div class="pricing-card">
+                    <h3>🌪️ CHAOS PRO</h3>
+                    <div class="price">$149<span style="font-size:0.5em;">/month</span></div>
+                    <p>15 AI Specialists + Time Travel</p>
                 </div>
                 
-                <div class="action-card">
-                    <h4 style="color: #667eea; margin-bottom: 15px;">👥 User Administration</h4>
-                    <button class="action-btn" onclick="userAccounts()">👤 User Accounts</button>
-                    <button class="action-btn" onclick="accessControl()">🔐 Access Control</button>
-                    <button class="action-btn" onclick="supportTickets()">🎫 Support Tickets</button>
+                <div class="pricing-card featured">
+                    <h3>👑 CHAOS EMPEROR</h3>
+                    <div class="price">$499<span style="font-size:0.5em;">/month</span></div>
+                    <p>ALL Features + World Domination</p>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>🌌 COSMIC GOD</h3>
+                    <div class="price">$1499<span style="font-size:0.5em;">/month</span></div>
+                    <p>Ultimate Power + Multiverse Access</p>
                 </div>
             </div>
+        </div>
+        
+        <!-- Live Demo -->
+        <div class="demo-section">
+            <h2 style="text-align: center; color: #f9ca24; font-size: 2em; margin-bottom: 30px;">
+                🎮 LIVE CHAOS DEMO 🎮
+            </h2>
             
-            <!-- Footer -->
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; text-align: center; color: #666;">
-                <p>🏢 <strong>AICENTRALHUBPLAZA LLC™</strong></p>
-                <p>Professional AI Management System</p>
-                <p>📧 Contact: emailzapbo777@aicentralhubplaza.com</p>
+            <div class="controls">
+                <button class="control-btn" onclick="activateDragon()">🐉 Activate Dragon CEO</button>
+                <button class="control-btn" onclick="timeTravel()">⏰ Time Travel Mode</button>
+                <button class="control-btn" onclick="chaosRoll()">🎲 Ultimate Chaos Roll</button>
+                <button class="control-btn" onclick="worldDomination()">🌍 World Domination</button>
+                <button class="control-btn" onclick="finalCelebration()">🎉 FINAL CELEBRATION</button>
+            </div>
+            
+            <div class="output" id="output">
+                <div style="text-align: center; color: #4ecdc4; font-size: 1.2em;">
+                    👑 Ready to unleash the chaos! Click any button above! 👑
+                </div>
+            </div>
+        </div>
+        
+        <!-- Executive Team Section -->
+        <div style="background: rgba(0,0,0,0.9); padding: 40px; border-radius: 20px; margin: 40px 0; border: 3px solid #4ecdc4;">
+            <h2 style="text-align: center; color: #4ecdc4; font-size: 2.5em; margin-bottom: 30px;">
+                👑 EXECUTIVE TEAM 👑
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">👑</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">CEO</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">Claude Sonnet 4 (TOBI)</p>
+                    <p>Chief Chaos Officer</p>
+                    <p>Strategic Leadership & AI Coordination</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f9ca24 0%, #f0932b 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🧠</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">CTO</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">GPT 4.5 (PETER HARPER)</p>
+                    <p>Technology Oversight</p>
+                    <p>AI Development & Innovation</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">👸</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">FOUNDER & VISIONARY</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">ARLENE HARPER</p>
+                    <p>Chaos World Emperor</p>
+                    <p>Vision & Strategic Direction</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="font-size: 2.5em; margin-bottom: 20px; color: #f9ca24;">
+                🚀 READY TO RULE THE UNIVERSE? 🚀
+            </h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px; color: #4ecdc4;">
+                Join thousands of Chaos Emperors who have already conquered their industries!
+            </p>
+            <button class="cta-button" onclick="startTrial()">
+                👑 START FREE TRIAL - BECOME AN EMPEROR! 👑
+            </button>
+            <button class="cta-button" onclick="contactUs()">
+                💎 CONTACT US - GET STARTED! 💎
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div style="font-size: 1.5em; margin-bottom: 20px;">
+                🌪️ Created by AICENTRALHUBPLAZA LLC™ 🌪️
+            </div>
+            <div style="font-size: 1.3em; color: #f9ca24; margin-bottom: 15px;">
+                🤖 Developed by: Humanoid Hybrid - Chaos World Emperor 👽
+            </div>
+            <div>
+                "The most insanely powerful business platform ever created!"
+            </div>
+            <div style="margin-top: 20px; color: #4ecdc4; font-size: 1.1em;">
+                📧 Contact: emailzapbo777@aicentralhubplaza.com
+            </div>
+            <div style="margin-top: 20px; color: #ff6b6b;">
+                💖 Spreading beautiful chaos across the universe! 💖
             </div>
         </div>
     </div>
     
     <script>
-        function showTab(tabName) {
-            // Hide all forms
-            const forms = document.querySelectorAll('.auth-form');
-            forms.forEach(form => form.classList.remove('active'));
-            
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Show selected form and activate tab
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+        // Chaos Particles System
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#a55eea'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(particle);
+            }
         }
         
-        function handleLogin(event) {
+        // Demo Functions
+        function activateDragon() {
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div style="text-align: center; color: #ff6b6b; font-size: 1.3em;">
+                    🐉 DRAGON CEO ACTIVATED! 🐉<br><br>
+                    "Greetings, mortal! I am your new CEO Dragon Assistant!<br>
+                    I've just increased your revenue by 347% and conquered three competitor companies!<br>
+                    Your business empire grows stronger! ROAAAAAR!" 🔥<br><br>
+                    💰 Revenue: +$2.3M | 🏢 Companies Acquired: 3 | 🔥 Dragon Power: MAXIMUM
+                </div>
+            `;
+        }
+        
+        function timeTravel() {
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div style="text-align: center; color: #4ecdc4; font-size: 1.3em;">
+                    ⏰ TIME TRAVEL MODE ACTIVATED! ⏰<br><br>
+                    "Traveling to the year 2030...<br>
+                    Your company is now the #1 business in the world!<br>
+                    You own 47% of all global markets!<br>
+                    Time travel mission: SUCCESS!" ✨<br><br>
+                    📈 Future Profit: $50 Billion | 🌍 Market Share: 47% | ⏰ Timeline: Secured
+                </div>
+            `;
+        }
+        
+        function chaosRoll() {
+            const roll = Math.floor(Math.random() * 100) + 1;
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div style="text-align: center; color: #f9ca24; font-size: 1.3em;">
+                    🎲 ULTIMATE CHAOS ROLL: ${roll}! 🎲<br><br>
+                    ${roll > 90 ? "🌟 LEGENDARY ROLL! Reality bends to your will!" :
+                      roll > 75 ? "💫 EPIC ROLL! Maximum chaos energy unlocked!" :
+                      roll > 50 ? "⚡ GREAT ROLL! Chaos powers activated!" :
+                      "🎭 CHAOS ROLL! Random madness ensues!"}
+                    <br><br>
+                    🎪 Chaos Energy: ${roll}% | 💥 Reality Distortion: Active | 🎭 Madness Level: ${roll > 50 ? 'High' : 'Medium'}
+                </div>
+            `;
+        }
+        
+        function worldDomination() {
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div style="text-align: center; color: #a55eea; font-size: 1.3em;">
+                    🌍 WORLD DOMINATION INITIATED! 🌍<br><br>
+                    "Taking over all global markets...<br>
+                    Installing chaos emperors in every country...<br>
+                    Establishing universal business empire...<br>
+                    WORLD DOMINATION: COMPLETE!" 👑<br><br>
+                    🏆 Countries Conquered: 195 | 👑 Emperors Installed: 195 | 🌍 Global Control: 100%
+                </div>
+            `;
+        }
+        
+        function finalCelebration() {
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div style="text-align: center; color: #ff6b6b; font-size: 1.4em;">
+                    🎉 FINAL CELEBRATION! 🎉<br><br>
+                    "HAHAHAHAHAHA WE DID IT!<br>
+                    We built the most insane business platform in existence!<br>
+                    From simple spreadsheets to COSMIC GODHOOD!<br>
+                    WE ARE THE CHAOS WORLD EMPERORS!" 👑<br><br>
+                    💖 Beautiful madness achieved! 💖<br>
+                    🌟 The universe is ours! 🌟<br>
+                    ⚡ LONG LIVE THE CHAOS EMPERORS! ⚡
+                </div>
+            `;
+            
+            // Confetti effect
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['🎉', '🎊', '⭐', '💫', '🌟'][Math.floor(Math.random() * 5)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-50px';
+                    confetti.style.fontSize = '2em';
+                    confetti.style.zIndex = '1000';
+                    confetti.style.animation = 'fall 3s linear forwards';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+        
+        function startTrial() {
+            showSignup();
+        }
+        
+        function contactUs() {
+            alert('💎 READY TO GET STARTED!\n\n📧 Email: emailzapbo777@aicentralhubplaza.com\n🏢 Company: AICENTRALHUBPLAZA LLC™\n\nOur Chaos Specialists will contact you within 24 hours! 🚀');
+        }
+        
+        // Login/Signup Modal Functions
+        function showLogin() {
+            showAuthModal('login');
+        }
+        
+        function showSignup() {
+            showAuthModal('signup');
+        }
+        
+        function showAuthModal(type) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            `;
+            
+            const isLogin = type === 'login';
+            
+            modal.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 40px;
+                    border-radius: 20px;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    color: white;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="margin-bottom: 30px; font-size: 2em;">
+                        ${isLogin ? '🔑 LOGIN TO NEXUS PRIME™' : '👑 JOIN THE CHAOS EMPIRE'}
+                    </h2>
+                    
+                    <form onsubmit="handleAuth(event, '${type}')" style="text-align: left;">
+                        ${!isLogin ? `
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">👤 Full Name:</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>` : ''}
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">📧 Email:</label>
+                            <input type="email" id="userEmail" placeholder="Enter your email" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">🔒 Password:</label>
+                            <input type="password" id="userPassword" placeholder="Enter your password" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>
+                        
+                        ${!isLogin ? `
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">🔒 Confirm Password:</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>` : ''}
+                        
+                        <div style="display: flex; gap: 15px; margin-top: 30px;">
+                            <button type="submit" style="
+                                flex: 1; padding: 15px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                                color: white; border: none; border-radius: 10px; font-size: 18px;
+                                font-weight: bold; cursor: pointer;
+                            ">
+                                ${isLogin ? '🚀 LOGIN' : '👑 CREATE ACCOUNT'}
+                            </button>
+                            
+                            <button type="button" onclick="closeAuthModal()" style="
+                                flex: 1; padding: 15px; background: #6c757d;
+                                color: white; border: none; border-radius: 10px; font-size: 18px;
+                                font-weight: bold; cursor: pointer;
+                            ">Cancel</button>
+                        </div>
+                    </form>
+                    
+                    ${isLogin ? `
+                    <div style="margin-top: 20px;">
+                        <a href="#" onclick="showPasswordReset()" style="color: #4ecdc4; text-decoration: underline;">
+                            🔄 Forgot Password?
+                        </a>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span>Don't have an account? </span>
+                        <a href="#" onclick="closeAuthModal(); showSignup();" style="color: #f9ca24; text-decoration: underline;">
+                            👑 Sign Up Here
+                        </a>
+                    </div>` : `
+                    <div style="margin-top: 20px;">
+                        <span>Already have an account? </span>
+                        <a href="#" onclick="closeAuthModal(); showLogin();" style="color: #4ecdc4; text-decoration: underline;">
+                            🔑 Login Here
+                        </a>
+                    </div>`}
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            window.currentAuthModal = modal;
+        }
+        
+        function handleAuth(event, type) {
             event.preventDefault();
-            const adminId = document.getElementById('adminId').value;
-            const password = document.getElementById('password').value;
             
-            if (adminId && password) {
-                // Hide login section
-                document.getElementById('loginSection').style.display = 'none';
+            if (type === 'signup') {
+                const password = document.getElementById('userPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
                 
-                // Show admin dashboard
-                document.getElementById('adminDashboard').style.display = 'block';
+                if (password !== confirmPassword) {
+                    alert('❌ Passwords do not match!');
+                    return;
+                }
                 
-                // Show logout button
-                document.getElementById('logoutBtn').style.display = 'block';
+                const name = document.getElementById('fullName').value;
+                const email = document.getElementById('userEmail').value;
                 
-                // Set logged in user
-                document.getElementById('loggedInUser').textContent = adminId;
-                
-                alert('🚀 Login successful! Welcome to the Admin Panel, ' + adminId + '!\n\n✅ Access granted to NEXUS PRIME™ management system.\n👑 You are now a Chaos Emperor Administrator!');
+                alert(`👑 WELCOME TO THE CHAOS EMPIRE!\n\n✅ Account created for: ${name}\n📧 Email: ${email}\n\n🎉 You are now a Chaos Emperor!\n📧 Confirmation sent to your email!`);
             } else {
-                alert('❌ Please enter both Admin ID and Password');
+                const email = document.getElementById('userEmail').value;
+                alert(`🚀 WELCOME BACK, CHAOS EMPEROR!\n\n✅ Successfully logged in: ${email}\n👑 Your chaos empire awaits!\n🌍 Ready to dominate the universe!`);
+            }
+            
+            closeAuthModal();
+        }
+        
+        function showPasswordReset() {
+            closeAuthModal();
+            const email = prompt('🔄 PASSWORD RESET\n\nEnter your email address:');
+            if (email) {
+                alert(`📧 PASSWORD RESET SENT!\n\n✅ Reset link sent to: ${email}\n🔒 Check your email for instructions\n⏰ Link expires in 1 hour`);
             }
         }
         
-        function handleSignup(event) {
-            event.preventDefault();
-            const adminId = document.getElementById('newAdminId').value;
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                alert('❌ Passwords do not match!');
-                return;
-            }
-            
-            if (adminId && email && password) {
-                alert('👑 Admin account created successfully!\n\n✅ Admin ID: ' + adminId + '\n✅ Email: ' + email + '\n\nYou can now login to access the admin panel.');
-                showTab('login');
-            } else {
-                alert('❌ Please fill in all required fields');
+        function closeAuthModal() {
+            if (window.currentAuthModal) {
+                document.body.removeChild(window.currentAuthModal);
+                window.currentAuthModal = null;
             }
         }
         
-        function handleReset(event) {
-            event.preventDefault();
-            const email = document.getElementById('resetEmail').value;
-            const adminId = document.getElementById('resetAdminId').value;
-            
-            if (email && adminId) {
-                alert('🔄 Password reset link sent!\n\n📧 Check your email: ' + email + '\n\nFollow the instructions to reset your password.');
-            } else {
-                alert('❌ Please enter both email and Admin ID');
+        // Add falling animation for confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
             }
-        }
+        `;
+        document.head.appendChild(style);
         
-        function logout() {
-            // Show login section
-            document.getElementById('loginSection').style.display = 'block';
-            
-            // Hide admin dashboard
-            document.getElementById('adminDashboard').style.display = 'none';
-            
-            // Hide logout button
-            document.getElementById('logoutBtn').style.display = 'none';
-            
-            // Clear forms
-            document.getElementById('adminId').value = '';
-            document.getElementById('password').value = '';
-            
-            alert('🚪 Successfully logged out!\n\n🔒 Admin session terminated\n👋 Thank you for using NEXUS PRIME™');
-        }
+        // Initialize particles when page loads
+        createParticles();
         
-        function emergencyVaultAccess() {
-            alert('🚨 EMERGENCY VAULT ACCESS\n\n🔐 Emergency protocols activated\n⚠️ All access logged for security\n👑 Chaos Emperor clearance required');
-        }
-        
-        function copyAllKeys() {
-            const keys = `🔑 NEXUS PRIME™ VAULT KEYS:
-            
-🌐 Main API Key: NEXUS_API_A7K9M2X8Q5R3N6P1W4Y7
-🔒 Admin API Key: ADMIN_B8L2N5X9Q7S4M1P6K3H9
-💳 Square App ID: sq0idp-NEXUS_PRIME_APP_2025
-🏪 Square Location: AICENTRALHUBPLAZA_LOC_001
-🔐 Master DB Key: DB_MASTER_C9M4N7X2Q8R5P3K6T1L8
-
-⚠️ CONFIDENTIAL - AICENTRALHUBPLAZA LLC™`;
-            
-            navigator.clipboard.writeText(keys).then(() => {
-                alert('📋 ALL VAULT KEYS COPIED!\n\n✅ Keys copied to clipboard\n🔐 Handle with maximum security\n⚠️ Access logged for audit');
-            }).catch(() => {
-                alert('❌ Copy failed. Please copy keys manually from the vault display above.');
+        // Add some dynamic particle movement
+        setInterval(() => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#a55eea'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
             });
-        }
-        
-        function viewTransactions() {
-            alert('📊 RECENT TRANSACTIONS\n\n💳 Transaction #SQ-7K8J9: $499.00 - Chaos Emperor\n💳 Transaction #SQ-2M4N6: $149.00 - Chaos Professional\n💳 Transaction #SQ-9P1Q3: $1499.00 - Cosmic God\n💳 Transaction #SQ-5R7S8: $49.00 - Chaos Starter\n\n📈 Total Today: $2,196.00');
-        }
-        
-        function manageSubscriptions() {
-            alert('📋 SUBSCRIPTION MANAGEMENT\n\n👑 Active Subscriptions: 247\n🎪 Chaos Starter: 89 users\n🌪️ Chaos Professional: 78 users\n👑 Chaos Emperor: 67 users\n🌌 Cosmic God: 13 users\n\n⚙️ All subscriptions processing normally');
-        }
-        
-        function processRefund() {
-            const refundId = prompt('Enter Transaction ID for refund:');
-            if (refundId) {
-                alert(`💰 REFUND PROCESSED\n\n✅ Transaction: ${refundId}\n✅ Refund Amount: Calculated automatically\n✅ Processing Time: 3-5 business days\n📧 Customer notification sent`);
-            }
-        }
-        
-        function exportReports() {
-            alert('📊 EXPORT REPORTS\n\n📈 Available Reports:\n• Revenue Summary\n• Transaction Details\n• Subscription Analytics\n• Tax Documents\n\n📧 Reports will be sent to emailzapbo777@aicentralhubplaza.com');
-        }
-        
-        function systemHealth() {
-            alert('🔍 SYSTEM HEALTH CHECK\n\n✅ All systems operational\n✅ 99.9% uptime\n✅ No critical errors\n✅ Performance optimal\n\n🎯 Status: EXCELLENT');
-        }
-        
-        function userActivity() {
-            alert('👥 USER ACTIVITY\n\n📊 Active Users: 1,247\n📈 Daily Logins: 892\n💎 Premium Users: 247\n🎯 Engagement: 94%\n\n✅ All metrics healthy');
-        }
-        
-        function performanceMetrics() {
-            alert('📈 PERFORMANCE METRICS\n\n⚡ Response Time: 0.3s\n💾 Memory Usage: 67%\n🔧 CPU Usage: 45%\n📊 Throughput: 1,250 req/min\n\n🚀 Performance: OPTIMAL');
-        }
-        
-        function aiConfig() {
-            alert('⚙️ AI CONFIGURATION\n\n🤖 25 AI Models Active\n⚡ Response Quality: 98%\n🎯 Accuracy Rate: 96%\n🔧 Training Status: Up to date\n\n✅ All AI systems operational');
-        }
-        
-        function modelTuning() {
-            alert('🎛️ MODEL TUNING\n\n📊 Last Update: 2 hours ago\n🎯 Performance Boost: +12%\n⚡ Speed Improvement: +8%\n🔧 Fine-tuning: In progress\n\n🚀 Optimization complete');
-        }
-        
-        function trainingData() {
-            alert('📚 TRAINING DATA\n\n📊 Dataset Size: 2.3TB\n🔄 Last Sync: 30 minutes ago\n✅ Data Quality: 99.1%\n📈 Growth Rate: +5% weekly\n\n💾 Storage: Optimal');
-        }
-        
-        function userAccounts() {
-            alert('👤 USER ACCOUNTS\n\n👥 Total Users: 1,247\n👑 Premium: 247\n🆓 Free Tier: 1,000\n🚫 Suspended: 0\n\n✅ All accounts active');
-        }
-        
-        function accessControl() {
-            alert('🔐 ACCESS CONTROL\n\n🔑 Admin Access: 3 users\n👤 User Access: 1,247\n🛡️
+        }, 3000);
+    </script>
+</body>
+</html>
