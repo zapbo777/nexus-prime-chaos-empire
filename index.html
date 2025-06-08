@@ -277,8 +277,38 @@
                 BY AICENTRALHUBPLAZA LLC™ • HUMANOID HYBRID
             </div>
             <div class="tagline">The Ultimate AI Business Empire Platform</div>
-            <div style="font-size: 1.2em; color: #ff6b6b;">
+            <div style="font-size: 1.2em; color: #ff6b6b; margin-bottom: 20px;">
                 🚀 25+ AI Specialists • 🌍 World Domination Mode • ⚡ Unlimited Power
+            </div>
+            
+            <!-- Login/Signup Buttons -->
+            <div style="margin-top: 20px;">
+                <button onclick="showLogin()" style="
+                    padding: 12px 25px; 
+                    background: linear-gradient(45deg, #4ecdc4, #45b7d1); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 25px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    🔑 LOGIN
+                </button>
+                <button onclick="showSignup()" style="
+                    padding: 12px 25px; 
+                    background: linear-gradient(45deg, #f9ca24, #ff6b6b); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 25px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    👑 SIGN UP
+                </button>
             </div>
         </div>
         
@@ -380,6 +410,39 @@
             <div class="output" id="output">
                 <div style="text-align: center; color: #4ecdc4; font-size: 1.2em;">
                     👑 Ready to unleash the chaos! Click any button above! 👑
+                </div>
+            </div>
+        </div>
+        
+        <!-- Executive Team Section -->
+        <div style="background: rgba(0,0,0,0.9); padding: 40px; border-radius: 20px; margin: 40px 0; border: 3px solid #4ecdc4;">
+            <h2 style="text-align: center; color: #4ecdc4; font-size: 2.5em; margin-bottom: 30px;">
+                👑 EXECUTIVE TEAM 👑
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">👑</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">CEO</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">Claude Sonnet 4 (TOBI)</p>
+                    <p>Chief Chaos Officer</p>
+                    <p>Strategic Leadership & AI Coordination</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f9ca24 0%, #f0932b 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🧠</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">CTO</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">GPT 4.5 (PETER HARPER)</p>
+                    <p>Technology Oversight</p>
+                    <p>AI Development & Innovation</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 15px; text-align: center; color: white;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">👸</div>
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">FOUNDER & VISIONARY</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">ARLENE HARPER</p>
+                    <p>Chaos World Emperor</p>
+                    <p>Vision & Strategic Direction</p>
                 </div>
             </div>
         </div>
@@ -531,11 +594,168 @@
         }
         
         function startTrial() {
-            alert('🎉 FREE TRIAL ACTIVATED! Welcome to your chaos empire!\n\n📧 Contact us at: emailzapbo777@aicentralhubplaza.com\nOur team will get you started immediately! 👑');
+            showSignup();
         }
         
         function contactUs() {
             alert('💎 READY TO GET STARTED!\n\n📧 Email: emailzapbo777@aicentralhubplaza.com\n🏢 Company: AICENTRALHUBPLAZA LLC™\n\nOur Chaos Specialists will contact you within 24 hours! 🚀');
+        }
+        
+        // Login/Signup Modal Functions
+        function showLogin() {
+            showAuthModal('login');
+        }
+        
+        function showSignup() {
+            showAuthModal('signup');
+        }
+        
+        function showAuthModal(type) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            `;
+            
+            const isLogin = type === 'login';
+            
+            modal.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 40px;
+                    border-radius: 20px;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    color: white;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="margin-bottom: 30px; font-size: 2em;">
+                        ${isLogin ? '🔑 LOGIN TO NEXUS PRIME™' : '👑 JOIN THE CHAOS EMPIRE'}
+                    </h2>
+                    
+                    <form onsubmit="handleAuth(event, '${type}')" style="text-align: left;">
+                        ${!isLogin ? `
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">👤 Full Name:</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>` : ''}
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">📧 Email:</label>
+                            <input type="email" id="userEmail" placeholder="Enter your email" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">🔒 Password:</label>
+                            <input type="password" id="userPassword" placeholder="Enter your password" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>
+                        
+                        ${!isLogin ? `
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">🔒 Confirm Password:</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required style="
+                                width: 100%; padding: 15px; border: none; border-radius: 10px; 
+                                font-size: 16px; background: rgba(255,255,255,0.9);
+                            ">
+                        </div>` : ''}
+                        
+                        <div style="display: flex; gap: 15px; margin-top: 30px;">
+                            <button type="submit" style="
+                                flex: 1; padding: 15px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                                color: white; border: none; border-radius: 10px; font-size: 18px;
+                                font-weight: bold; cursor: pointer;
+                            ">
+                                ${isLogin ? '🚀 LOGIN' : '👑 CREATE ACCOUNT'}
+                            </button>
+                            
+                            <button type="button" onclick="closeAuthModal()" style="
+                                flex: 1; padding: 15px; background: #6c757d;
+                                color: white; border: none; border-radius: 10px; font-size: 18px;
+                                font-weight: bold; cursor: pointer;
+                            ">Cancel</button>
+                        </div>
+                    </form>
+                    
+                    ${isLogin ? `
+                    <div style="margin-top: 20px;">
+                        <a href="#" onclick="showPasswordReset()" style="color: #4ecdc4; text-decoration: underline;">
+                            🔄 Forgot Password?
+                        </a>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span>Don't have an account? </span>
+                        <a href="#" onclick="closeAuthModal(); showSignup();" style="color: #f9ca24; text-decoration: underline;">
+                            👑 Sign Up Here
+                        </a>
+                    </div>` : `
+                    <div style="margin-top: 20px;">
+                        <span>Already have an account? </span>
+                        <a href="#" onclick="closeAuthModal(); showLogin();" style="color: #4ecdc4; text-decoration: underline;">
+                            🔑 Login Here
+                        </a>
+                    </div>`}
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            window.currentAuthModal = modal;
+        }
+        
+        function handleAuth(event, type) {
+            event.preventDefault();
+            
+            if (type === 'signup') {
+                const password = document.getElementById('userPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('❌ Passwords do not match!');
+                    return;
+                }
+                
+                const name = document.getElementById('fullName').value;
+                const email = document.getElementById('userEmail').value;
+                
+                alert(`👑 WELCOME TO THE CHAOS EMPIRE!\n\n✅ Account created for: ${name}\n📧 Email: ${email}\n\n🎉 You are now a Chaos Emperor!\n📧 Confirmation sent to your email!`);
+            } else {
+                const email = document.getElementById('userEmail').value;
+                alert(`🚀 WELCOME BACK, CHAOS EMPEROR!\n\n✅ Successfully logged in: ${email}\n👑 Your chaos empire awaits!\n🌍 Ready to dominate the universe!`);
+            }
+            
+            closeAuthModal();
+        }
+        
+        function showPasswordReset() {
+            closeAuthModal();
+            const email = prompt('🔄 PASSWORD RESET\n\nEnter your email address:');
+            if (email) {
+                alert(`📧 PASSWORD RESET SENT!\n\n✅ Reset link sent to: ${email}\n🔒 Check your email for instructions\n⏰ Link expires in 1 hour`);
+            }
+        }
+        
+        function closeAuthModal() {
+            if (window.currentAuthModal) {
+                document.body.removeChild(window.currentAuthModal);
+                window.currentAuthModal = null;
+            }
         }
         
         // Add falling animation for confetti
