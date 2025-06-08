@@ -46,6 +46,11 @@
             margin-bottom: 30px;
         }
         
+        /* Login Section Styles */
+        .login-section {
+            display: block;
+        }
+        
         .auth-tabs {
             display: flex;
             justify-content: center;
@@ -121,6 +126,20 @@
         
         .submit-btn:hover {
             transform: translateY(-2px);
+        }
+        
+        /* Admin Dashboard Styles */
+        .admin-dashboard {
+            display: none;
+        }
+        
+        .welcome-message {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 1.2em;
         }
         
         .vault-access {
@@ -248,6 +267,19 @@
             text-align: center;
         }
         
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
         @media (max-width: 768px) {
             .admin-container {
                 padding: 20px;
@@ -266,97 +298,405 @@
 </head>
 <body>
     <div class="admin-container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">🔐 NEXUS PRIME™ Admin Portal</div>
-            <div class="subtitle">
-                AICENTRALHUBPLAZA LLC™ • Professional AI Management System
+        <!-- Logout Button (Hidden initially) -->
+        <button class="logout-btn" id="logoutBtn" onclick="logout()" style="display: none;">🚪 Logout</button>
+        
+        <!-- Login Section -->
+        <div class="login-section" id="loginSection">
+            <!-- Header -->
+            <div class="header">
+                <div class="logo">🔐 NEXUS PRIME™ Admin Portal</div>
+                <div class="subtitle">
+                    AICENTRALHUBPLAZA LLC™ • Professional AI Management System
+                </div>
+                <div style="color: #e74c3c; font-weight: bold; margin-top: 15px;">
+                    🔒 Secure Administrator Access Only
+                </div>
+            </div>
+            
+            <!-- Authentication Tabs -->
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showTab('login')">🔑 Admin Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">📝 Admin Signup</button>
+                <button class="tab-btn" onclick="showTab('reset')">🔄 Password Reset</button>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="login" class="auth-form active">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>👤 Admin ID:</label>
+                        <input type="text" id="adminId" placeholder="Enter your admin ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🔒 Password:</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">🚀 Access Admin Panel</button>
+                </form>
+            </div>
+            
+            <!-- Signup Form -->
+            <div id="signup" class="auth-form">
+                <form onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label>👤 Create Admin ID:</label>
+                        <input type="text" id="newAdminId" placeholder="Choose your admin ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>📧 Email:</label>
+                        <input type="email" id="adminEmail" placeholder="admin@aicentralhubplaza.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🔒 Password:</label>
+                        <input type="password" id="newPassword" placeholder="Create secure password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🔒 Confirm Password:</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">👑 Create Admin Account</button>
+                </form>
+            </div>
+            
+            <!-- Reset Form -->
+            <div id="reset" class="auth-form">
+                <form onsubmit="handleReset(event)">
+                    <div class="form-group">
+                        <label>📧 Admin Email:</label>
+                        <input type="email" id="resetEmail" placeholder="Enter your admin email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>👤 Admin ID:</label>
+                        <input type="text" id="resetAdminId" placeholder="Enter your admin ID" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">🔄 Send Reset Link</button>
+                </form>
             </div>
         </div>
         
-        <!-- Authentication Tabs -->
-        <div class="auth-tabs">
-            <button class="tab-btn active" onclick="showTab('login')">🔑 Admin Login</button>
-            <button class="tab-btn" onclick="showTab('signup')">📝 Admin Signup</button>
-            <button class="tab-btn" onclick="showTab('reset')">🔄 Password Reset</button>
-        </div>
-        
-        <!-- Login Form -->
-        <div id="login" class="auth-form active">
-            <form onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>👤 Admin ID:</label>
-                    <input type="text" id="adminId" placeholder="Enter your admin ID" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>🔒 Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                </div>
-                
-                <button type="submit" class="submit-btn">🚀 Access Admin Panel</button>
-            </form>
-        </div>
-        
-        <!-- Signup Form -->
-        <div id="signup" class="auth-form">
-            <form onsubmit="handleSignup(event)">
-                <div class="form-group">
-                    <label>👤 Create Admin ID:</label>
-                    <input type="text" id="newAdminId" placeholder="Choose your admin ID" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>📧 Email:</label>
-                    <input type="email" id="adminEmail" placeholder="admin@aicentralhubplaza.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>🔒 Password:</label>
-                    <input type="password" id="newPassword" placeholder="Create secure password" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>🔒 Confirm Password:</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                </div>
-                
-                <button type="submit" class="submit-btn">👑 Create Admin Account</button>
-            </form>
-        </div>
-        
-        <!-- Reset Form -->
-        <div id="reset" class="auth-form">
-            <form onsubmit="handleReset(event)">
-                <div class="form-group">
-                    <label>📧 Admin Email:</label>
-                    <input type="email" id="resetEmail" placeholder="Enter your admin email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>👤 Admin ID:</label>
-                    <input type="text" id="resetAdminId" placeholder="Enter your admin ID" required>
-                </div>
-                
-                <button type="submit" class="submit-btn">🔄 Send Reset Link</button>
-            </form>
-        </div>
-        
-        <!-- Vault Access -->
-        <div class="vault-access">
-            <h3 style="color: #00ff00; font-size: 1.5em; margin-bottom: 15px;">🗝️ SECRET VAULT ACCESS</h3>
-            <p style="margin-bottom: 20px;">Access the secure key vault system</p>
+        <!-- Admin Dashboard (Hidden until login) -->
+        <div class="admin-dashboard" id="adminDashboard">
+            <!-- Welcome Message -->
+            <div class="welcome-message">
+                <h2>🎉 Welcome to the Chaos Command Center!</h2>
+                <p>You are now logged in as Administrator: <span id="loggedInUser"></span></p>
+            </div>
             
-            <!-- Embedded Vault Keys -->
-            <div style="background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left;">
-                <div style="color: #4ecdc4; font-size: 1.2em; margin-bottom: 15px;">🔑 CRITICAL SYSTEM KEYS:</div>
+            <!-- Vault Access -->
+            <div class="vault-access">
+                <h3 style="color: #00ff00; font-size: 1.5em; margin-bottom: 15px;">🗝️ SECRET VAULT ACCESS</h3>
+                <p style="margin-bottom: 20px;">Access the secure key vault system</p>
                 
-                <div style="margin-bottom: 15px;">
-                    <div style="color: #f9ca24; font-weight: bold;">🌐 Main API Key:</div>
-                    <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
-                        NEXUS_API_A7K9M2X8Q5R3N6P1W4Y7
+                <!-- Embedded Vault Keys -->
+                <div style="background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left;">
+                    <div style="color: #4ecdc4; font-size: 1.2em; margin-bottom: 15px;">🔑 CRITICAL SYSTEM KEYS:</div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #f9ca24; font-weight: bold;">🌐 Main API Key:</div>
+                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
+                            NEXUS_API_A7K9M2X8Q5R3N6P1W4Y7
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #f9ca24; font-weight: bold;">🔒 Admin API Key:</div>
+                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
+                            ADMIN_B8L2N5X9Q7S4M1P6K3H9
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #f9ca24; font-weight: bold;">💳 Square Application ID:</div>
+                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
+                            sq0idp-NEXUS_PRIME_APP_2025
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #f9ca24; font-weight: bold;">🏪 Square Location ID:</div>
+                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
+                            AICENTRALHUBPLAZA_LOC_001
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #f9ca24; font-weight: bold;">🔐 Master DB Key:</div>
+                        <div style="color: #00ff00; font-family: monospace; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; word-break: break-all;">
+                            DB_MASTER_C9M4N7X2Q8R5P3K6T1L8
+                        </div>
                     </div>
                 </div>
                 
-                <div style="margin-bottom: 15px;">
-                    <div style="color: #f9ca24; font-weight: bold;">🔒 Admin
+                <button class="vault-btn" onclick="window.open('./vault.html', '_blank')">
+                    🔐 OPEN FULL VAULT
+                </button>
+                <button class="vault-btn" onclick="emergencyVaultAccess()">
+                    🚨 EMERGENCY ACCESS
+                </button>
+                <button class="vault-btn" onclick="copyAllKeys()">
+                    📋 COPY ALL KEYS
+                </button>
+            </div>
+            
+            <!-- Square Payments Management -->
+            <div class="square-payments">
+                <div class="square-title">💳 SQUARE PAYMENTS MANAGEMENT</div>
+                
+                <div class="payment-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">$47,392</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-value">247</div>
+                        <div class="stat-label">Active Subscriptions</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-value">$1,374</div>
+                        <div class="stat-label">Processing Fees</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-value">99.2%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <button class="action-btn" onclick="viewTransactions()">📊 View Transactions</button>
+                    <button class="action-btn" onclick="manageSubscriptions()">📋 Manage Subscriptions</button>
+                    <button class="action-btn" onclick="processRefund()">💰 Process Refund</button>
+                    <button class="action-btn" onclick="exportReports()">📈 Export Reports</button>
+                </div>
+            </div>
+            
+            <!-- Executive Team -->
+            <div class="team-section">
+                <h2 style="color: #28a745; text-align: center; margin-bottom: 20px;">👥 EXECUTIVE TEAM</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>👑 CEO</h3>
+                        <p><strong>Claude Sonnet 4 (TOBI)</strong></p>
+                        <p>Chief Chaos Officer</p>
+                        <p>Strategic Leadership</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <h3>🧠 CTO</h3>
+                        <p><strong>GPT 4.5 (PETER HARPER)</strong></p>
+                        <p>Technology Oversight</p>
+                        <p>AI Development</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <h3>👸 FOUNDER</h3>
+                        <p><strong>ARLENE HARPER</strong></p>
+                        <p>Vision & Strategy</p>
+                        <p>Company Direction</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Actions -->
+            <div class="admin-actions">
+                <div class="action-card">
+                    <h4 style="color: #667eea; margin-bottom: 15px;">📊 System Monitoring</h4>
+                    <button class="action-btn" onclick="systemHealth()">🔍 System Health</button>
+                    <button class="action-btn" onclick="userActivity()">👥 User Activity</button>
+                    <button class="action-btn" onclick="performanceMetrics()">📈 Performance</button>
+                </div>
+                
+                <div class="action-card">
+                    <h4 style="color: #667eea; margin-bottom: 15px;">🔧 AI Management</h4>
+                    <button class="action-btn" onclick="aiConfig()">⚙️ AI Configuration</button>
+                    <button class="action-btn" onclick="modelTuning()">🎛️ Model Tuning</button>
+                    <button class="action-btn" onclick="trainingData()">📚 Training Data</button>
+                </div>
+                
+                <div class="action-card">
+                    <h4 style="color: #667eea; margin-bottom: 15px;">👥 User Administration</h4>
+                    <button class="action-btn" onclick="userAccounts()">👤 User Accounts</button>
+                    <button class="action-btn" onclick="accessControl()">🔐 Access Control</button>
+                    <button class="action-btn" onclick="supportTickets()">🎫 Support Tickets</button>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; text-align: center; color: #666;">
+                <p>🏢 <strong>AICENTRALHUBPLAZA LLC™</strong></p>
+                <p>Professional AI Management System</p>
+                <p>📧 Contact: emailzapbo777@aicentralhubplaza.com</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all forms
+            const forms = document.querySelectorAll('.auth-form');
+            forms.forEach(form => form.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected form and activate tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function handleLogin(event) {
+            event.preventDefault();
+            const adminId = document.getElementById('adminId').value;
+            const password = document.getElementById('password').value;
+            
+            if (adminId && password) {
+                // Hide login section
+                document.getElementById('loginSection').style.display = 'none';
+                
+                // Show admin dashboard
+                document.getElementById('adminDashboard').style.display = 'block';
+                
+                // Show logout button
+                document.getElementById('logoutBtn').style.display = 'block';
+                
+                // Set logged in user
+                document.getElementById('loggedInUser').textContent = adminId;
+                
+                alert('🚀 Login successful! Welcome to the Admin Panel, ' + adminId + '!\n\n✅ Access granted to NEXUS PRIME™ management system.\n👑 You are now a Chaos Emperor Administrator!');
+            } else {
+                alert('❌ Please enter both Admin ID and Password');
+            }
+        }
+        
+        function handleSignup(event) {
+            event.preventDefault();
+            const adminId = document.getElementById('newAdminId').value;
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('❌ Passwords do not match!');
+                return;
+            }
+            
+            if (adminId && email && password) {
+                alert('👑 Admin account created successfully!\n\n✅ Admin ID: ' + adminId + '\n✅ Email: ' + email + '\n\nYou can now login to access the admin panel.');
+                showTab('login');
+            } else {
+                alert('❌ Please fill in all required fields');
+            }
+        }
+        
+        function handleReset(event) {
+            event.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+            const adminId = document.getElementById('resetAdminId').value;
+            
+            if (email && adminId) {
+                alert('🔄 Password reset link sent!\n\n📧 Check your email: ' + email + '\n\nFollow the instructions to reset your password.');
+            } else {
+                alert('❌ Please enter both email and Admin ID');
+            }
+        }
+        
+        function logout() {
+            // Show login section
+            document.getElementById('loginSection').style.display = 'block';
+            
+            // Hide admin dashboard
+            document.getElementById('adminDashboard').style.display = 'none';
+            
+            // Hide logout button
+            document.getElementById('logoutBtn').style.display = 'none';
+            
+            // Clear forms
+            document.getElementById('adminId').value = '';
+            document.getElementById('password').value = '';
+            
+            alert('🚪 Successfully logged out!\n\n🔒 Admin session terminated\n👋 Thank you for using NEXUS PRIME™');
+        }
+        
+        function emergencyVaultAccess() {
+            alert('🚨 EMERGENCY VAULT ACCESS\n\n🔐 Emergency protocols activated\n⚠️ All access logged for security\n👑 Chaos Emperor clearance required');
+        }
+        
+        function copyAllKeys() {
+            const keys = `🔑 NEXUS PRIME™ VAULT KEYS:
+            
+🌐 Main API Key: NEXUS_API_A7K9M2X8Q5R3N6P1W4Y7
+🔒 Admin API Key: ADMIN_B8L2N5X9Q7S4M1P6K3H9
+💳 Square App ID: sq0idp-NEXUS_PRIME_APP_2025
+🏪 Square Location: AICENTRALHUBPLAZA_LOC_001
+🔐 Master DB Key: DB_MASTER_C9M4N7X2Q8R5P3K6T1L8
+
+⚠️ CONFIDENTIAL - AICENTRALHUBPLAZA LLC™`;
+            
+            navigator.clipboard.writeText(keys).then(() => {
+                alert('📋 ALL VAULT KEYS COPIED!\n\n✅ Keys copied to clipboard\n🔐 Handle with maximum security\n⚠️ Access logged for audit');
+            }).catch(() => {
+                alert('❌ Copy failed. Please copy keys manually from the vault display above.');
+            });
+        }
+        
+        function viewTransactions() {
+            alert('📊 RECENT TRANSACTIONS\n\n💳 Transaction #SQ-7K8J9: $499.00 - Chaos Emperor\n💳 Transaction #SQ-2M4N6: $149.00 - Chaos Professional\n💳 Transaction #SQ-9P1Q3: $1499.00 - Cosmic God\n💳 Transaction #SQ-5R7S8: $49.00 - Chaos Starter\n\n📈 Total Today: $2,196.00');
+        }
+        
+        function manageSubscriptions() {
+            alert('📋 SUBSCRIPTION MANAGEMENT\n\n👑 Active Subscriptions: 247\n🎪 Chaos Starter: 89 users\n🌪️ Chaos Professional: 78 users\n👑 Chaos Emperor: 67 users\n🌌 Cosmic God: 13 users\n\n⚙️ All subscriptions processing normally');
+        }
+        
+        function processRefund() {
+            const refundId = prompt('Enter Transaction ID for refund:');
+            if (refundId) {
+                alert(`💰 REFUND PROCESSED\n\n✅ Transaction: ${refundId}\n✅ Refund Amount: Calculated automatically\n✅ Processing Time: 3-5 business days\n📧 Customer notification sent`);
+            }
+        }
+        
+        function exportReports() {
+            alert('📊 EXPORT REPORTS\n\n📈 Available Reports:\n• Revenue Summary\n• Transaction Details\n• Subscription Analytics\n• Tax Documents\n\n📧 Reports will be sent to emailzapbo777@aicentralhubplaza.com');
+        }
+        
+        function systemHealth() {
+            alert('🔍 SYSTEM HEALTH CHECK\n\n✅ All systems operational\n✅ 99.9% uptime\n✅ No critical errors\n✅ Performance optimal\n\n🎯 Status: EXCELLENT');
+        }
+        
+        function userActivity() {
+            alert('👥 USER ACTIVITY\n\n📊 Active Users: 1,247\n📈 Daily Logins: 892\n💎 Premium Users: 247\n🎯 Engagement: 94%\n\n✅ All metrics healthy');
+        }
+        
+        function performanceMetrics() {
+            alert('📈 PERFORMANCE METRICS\n\n⚡ Response Time: 0.3s\n💾 Memory Usage: 67%\n🔧 CPU Usage: 45%\n📊 Throughput: 1,250 req/min\n\n🚀 Performance: OPTIMAL');
+        }
+        
+        function aiConfig() {
+            alert('⚙️ AI CONFIGURATION\n\n🤖 25 AI Models Active\n⚡ Response Quality: 98%\n🎯 Accuracy Rate: 96%\n🔧 Training Status: Up to date\n\n✅ All AI systems operational');
+        }
+        
+        function modelTuning() {
+            alert('🎛️ MODEL TUNING\n\n📊 Last Update: 2 hours ago\n🎯 Performance Boost: +12%\n⚡ Speed Improvement: +8%\n🔧 Fine-tuning: In progress\n\n🚀 Optimization complete');
+        }
+        
+        function trainingData() {
+            alert('📚 TRAINING DATA\n\n📊 Dataset Size: 2.3TB\n🔄 Last Sync: 30 minutes ago\n✅ Data Quality: 99.1%\n📈 Growth Rate: +5% weekly\n\n💾 Storage: Optimal');
+        }
+        
+        function userAccounts() {
+            alert('👤 USER ACCOUNTS\n\n👥 Total Users: 1,247\n👑 Premium: 247\n🆓 Free Tier: 1,000\n🚫 Suspended: 0\n\n✅ All accounts active');
+        }
+        
+        function accessControl() {
+            alert('🔐 ACCESS CONTROL\n\n🔑 Admin Access: 3 users\n👤 User Access: 1,247\n🛡️
